@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">✨</span>
+            <span class="logo-text">ImageAI</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active">Generate</a>
+            <a href="#" class="nav-item">Gallery</a>
+            <a href="#" class="nav-item">History</a>
+            <a href="#" class="nav-item">Settings</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="breadcrumb">Home / Generate Images</div>
+            <div class="user-menu">
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">⚙️</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="hero-section">
+                <h1>Create Stunning Images</h1>
+                <p>Transform your imagination into beautiful visuals powered by AI</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="generator-panel">
+                    <div class="panel-header">
+                        <h2>Image Generator</h2>
+                        <span class="badge">Premium</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="prompt">Your Creative Vision</label>
+                        <textarea 
+                            id="prompt" 
+                            class="prompt-input" 
+                            placeholder="Describe the image you want to generate... (e.g., 'A futuristic cityscape at sunset with flying cars')"
+                        ></textarea>
+                        <div class="char-count"><span id="charCount">0</span>/500</div>
+                    </div>
+
+                    <div class="controls">
+                        <div class="control-group">
+                            <label for="style">
+                                <span class="control-label">Art Style</span>
+                                <span class="help-icon">ℹ️</span>
+                            </label>
+                            <select id="style" class="control-input">
+                                <option value="realistic">Realistic</option>
+                                <option value="artistic">Artistic</option>
+                                <option value="cartoon">Cartoon</option>
+                                <option value="abstract">Abstract</option>
+                                <option value="cyberpunk">Cyberpunk</option>
+                                <option value="vintage">Vintage</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="resolution">
+                                <span class="control-label">Resolution</span>
+                                <span class="help-icon">ℹ️</span>
+                            </label>
+                            <select id="resolution" class="control-input">
+                                <option value="512x512">512 × 512</option>
+                                <option value="768x768">768 × 768</option>
+                                <option value="1024x1024">1024 × 1024</option>
+                                <option value="1536x1024">1536 × 1024</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="quality">
+                                <span class="control-label">Quality</span>
+                                <span class="help-icon">ℹ️</span>
+                            </label>
+                            <select id="quality" class="control-input">
+                                <option value="standard">Standard</option>
+                                <option value="high">High</option>
+                                <option value="ultra">Ultra</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="count">
+                                <span class="control-label">Quantity</span>
+                                <span class="help-icon">ℹ️</span>
+                            </label>
+                            <select id="count" class="control-input">
+                                <option value="1">1 Image</option>
+                                <option value="2">2 Images</option>
+                                <option value="4">4 Images</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="generateBtn" class="generate-btn">
+                        <span class="loading-spinner"></span>
+                        <span class="btn-text">Generate Magic ✨</span>
+                    </button>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="panel-header">
+                        <h2>Preview & Tips</h2>
+                    </div>
+                    <div class="preview-content">
+                        <div class="tip-box">
+                            <span class="tip-emoji">💡</span>
+                            <div class="tip-text">
+                                <h3>Pro Tip</h3>
+                                <p>Be specific with details: colors, mood, lighting, and art style for better results.</p>
+                            </div>
+                        </div>
+                        <div class="tip-box">
+                            <span class="tip-emoji">⚡</span>
+                            <div class="tip-text">
+                                <h3>Quick Start</h3>
+                                <p>Click on the placeholder in the gallery to use suggested prompts.</p>
+                            </div>
+                        </div>
+                        <div class="tip-box">
+                            <span class="tip-emoji">🎨</span>
+                            <div class="tip-text">
+                                <h3>Style Guide</h3>
+                                <p>Combine styles: "Realistic cyberpunk portrait with neon lighting"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="results-header">
+                    <h2>Generated Images</h2>
+                    <div class="results-controls">
+                        <button class="filter-btn">🔄 Refresh</button>
+                        <button class="filter-btn">📥 Download All</button>
+                    </div>
+                </div>
+
+                <div id="results">
+                    <div class="placeholder">
+                        <div class="placeholder-graphic">
+                            <svg class="placeholder-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                            </svg>
+                        </div>
+                        <h3>No Images Yet</h3>
+                        <p>Your AI-generated images will appear here</p>
+                        <p class="placeholder-hint">Get started by entering a prompt above</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const promptInput = document.getElementById('prompt');
+        const styleSelect = document.getElementById('style');
+        const resolutionSelect = document.getElementById('resolution');
+        const qualitySelect = document.getElementById('quality');
+        const countSelect = document.getElementById('count');
+        const generateBtn = document.getElementById('generateBtn');
+        const resultsDiv = document.getElementById('results');
+        const loadingSpinner = document.querySelector('.loading-spinner');
+        const btnText = document.querySelector('.btn-text');
+        const charCount = document.getElementById('charCount');
+
+        let isGenerating = false;
+
+        generateBtn.addEventListener('click', generateImages);
+
+        promptInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                generateImages();
+            }
+        });
+
+        promptInput.addEventListener('input', (e) => {
+            charCount.textContent = e.target.value.length;
+        });
+
+        function generateImages() {
+            const prompt = promptInput.value.trim();
+            
+            if (!prompt) {
+                showStatusMessage('error', 'Please enter a description for your image.');
+                return;
+            }
+
+            if (isGenerating) return;
+
+            isGenerating = true;
+            generateBtn.disabled = true;
+            loadingSpinner.style.display = 'inline-block';
+            btnText.textContent = 'Creating...';
+
+            resultsDiv.innerHTML = '';
+
+            showStatusMessage('info', 'Generating your images... This may take a few moments.');
+
+            setTimeout(() => {
+                const imageCount = parseInt(countSelect.value);
+                const resolution = resolutionSelect.value;
+                const style = styleSelect.value;
+                const quality = qualitySelect.value;
+
+                generateImageCards(prompt, imageCount, resolution, style, quality);
+
+                isGenerating = false;
+                generateBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+                btnText.textContent = 'Generate Magic ✨';
+
+                showStatusMessage('success', `Successfully generated ${imageCount} image${imageCount > 1 ? 's' : ''}!`);
+            }, 2000);
+        }
+
+        async function generateImageCards(prompt, count, resolution, style, quality) {
+            const imageGrid = document.createElement('div');
+            imageGrid.className = 'image-grid';
+
+            for (let i = 0; i < count; i++) {
+                const imageCard = document.createElement('div');
+                imageCard.className = 'image-card';
+
+                const enhancedPrompt = `${prompt}, ${style} style, high quality, detailed`;
+                const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(enhancedPrompt)}?width=${resolution.split('x')[0]}&height=${resolution.split('x')[1]}&seed=${Date.now() + i}&nologo=true`;
+
+                imageCard.innerHTML = `
+                    <div class="image-container">
+                        <img src="${imageUrl}" 
+                             alt="Generated image: ${prompt}" 
+                             class="image-element"
+                             onload="this.style.opacity='1'"
+                             onerror="this.parentElement.innerHTML='<div class=\\'image-placeholder\\'>Failed to generate image</div>'"
+                             loading="lazy">
+                        <div class="image-overlay">
+                            <span>Click to view full size</span>
+                        </div>
+                    </div>
+                    <div class="image-info">
+                        <div class="image-prompt">"${prompt}"</div>
+                        <div class="image-meta">
+                            <span class="meta-tag">${resolution}</span>
+                            <span class="meta-tag">${style}</span>
+                            <span class="meta-tag">${quality}</span>
+                        </div>
+                        <div class="image-actions">
+                            <button class="action-btn download-btn" onclick="downloadImage('${imageUrl}', '${prompt.substring(0, 30)}')">
+                                📥 Download
+                            </button>
+                            <button class="action-btn view-btn" onclick="openImageModal('${imageUrl}', '${prompt}')">
+                                👁️ View
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                imageCard.addEventListener('mouseenter', () => {
+                    const overlay = imageCard.querySelector('.image-overlay');
+                    if (overlay) overlay.style.opacity = '1';
+                });
+
+                imageCard.addEventListener('mouseleave', () => {
+                    const overlay = imageCard.querySelector('.image-overlay');
+                    if (overlay) overlay.style.opacity = '0';
+                });
+
+                imageGrid.appendChild(imageCard);
+            }
+
+            resultsDiv.appendChild(imageGrid);
+        }
+
+        function showStatusMessage(type, message) {
+            const existingMessage = document.querySelector('.status-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.textContent = message;
+
+            resultsDiv.insertBefore(statusDiv, resultsDiv.firstChild);
+
+            if (type === 'success' || type === 'info') {
+                setTimeout(() => {
+                    if (statusDiv.parentNode) {
+                        statusDiv.remove();
+                    }
+                }, 5000);
+            }
+        }
+
+        const samplePrompts = [
+            "A majestic mountain landscape at golden hour with a crystal clear lake reflecting the peaks",
+            "A futuristic robot sitting in a cozy library reading a book",
+            "An ancient Japanese temple surrounded by cherry blossoms in full bloom",
+            "A steampunk airship floating above a Victorian city at sunset",
+            "A magical forest with glowing mushrooms and ethereal light filtering through the trees"
+        ];
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.placeholder') && !promptInput.value.trim()) {
+                const randomPrompt = samplePrompts[Math.floor(Math.random() * samplePrompts.length)];
+                promptInput.value = randomPrompt;
+                promptInput.focus();
+            }
+        });
+
+        function downloadImage(imageUrl, filename) {
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            link.download = `ai-generated-${filename.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function openImageModal(imageUrl, prompt) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <img src="${imageUrl}" class="modal-image">
+                    <div class="modal-prompt">"${prompt}"</div>
+                    <button class="modal-close" onclick="this.closest('.image-modal').remove()">✕</button>
+                </div>
+            `;
+
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+</html>
