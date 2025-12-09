@@ -47,8 +47,11 @@ Start generating images!
 
 
 ai-image-generator/
+
 ├── index.html      # Main HTML file with structure and JavaScript
+
 ├── styles.css      # Complete styling and responsive design
+
 └── README.md       # This file
 
 
